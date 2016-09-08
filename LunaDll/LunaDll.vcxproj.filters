@@ -523,6 +523,7 @@
     <ClInclude Include="Rendering\FFmpeg\FFmpegMedia2.h" />
     <ClInclude Include="Rendering\FFmpeg\FFmpegMediaPlayer2.h" />
     <ClInclude Include="Rendering\FFmpeg\FFmpegDecodeComponent.h" />
+    <ClInclude Include="Misc\NPCUID.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LuaMain\LuaHelper.cpp">
@@ -1002,6 +1003,8 @@
     <ClCompile Include="Rendering\FFmpeg\FFmpegMedia2.cpp" />
     <ClCompile Include="Rendering\FFmpeg\FFmpegMediaPlayer2.cpp" />
     <ClCompile Include="Rendering\FFmpeg\FFmpegDecodeComponent.cpp" />
+    <ClCompile Include="Misc\NPCUID.cpp" />
+    <ClCompile Include="Misc\RuntimeHookComponents\RuntimeHookNPCSpawn.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Misc\scratch.txt">

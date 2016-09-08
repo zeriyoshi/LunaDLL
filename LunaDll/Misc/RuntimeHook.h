@@ -96,6 +96,10 @@ extern LRESULT CALLBACK KeyHOOKProc(int nCode, WPARAM wParam, LPARAM lParam);
 // Hooks which are helping fixups
 extern void IsNPCCollidesWithVeggiHook_Wrapper();
 
+extern void NPCSpawnHook();
+extern void setNPCSpawnCallback();
+extern void clearNPCSpawnCallback();
+
 
 
 /************************************************************************/

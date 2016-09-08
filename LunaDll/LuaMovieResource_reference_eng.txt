@@ -1,0 +1,99 @@
+﻿LuaMovieResource can be treated as LuaImageResource
+
+Mapping:Channel num -> Channel
+	0->B
+	1->G
+	2->R
+	3->A
+	4->Additional B
+	5->Additional G
+	6->Additional R
+	7->Additional A
+
+SMBX Graphics can be overriden in the same way of replacing with gif.(need lunaall.lua)
+(e.g. npc-1.mp4 replaces the graphics of the npc ID:1)
+
+・Graphics.loadMovie(string filepath)
+	Load a movie file and return an instance of LuaMovieResource.
+	The file with suffix "_m" is also loaded as additional channels if the file exists.
+	(e.g. filepath=smbx.mp4 -> additional channel file = smbx_m.mp4)
+
+・Graphics.draw****
+	Draw(refresh) one frame of the movie.
+	When the movie is rendered, the audio is also played.
+	The rendered frame is synchronized with audio. 
+
+・Graphics.drawImageScaleWP(LuaMovieResource img,number screenX,number screenY,number width,number height,number priority)
+・Graphics.drawImageScaleWP(LuaMovieResource img,number screenX,number screenY,number width,number height,number opacity,number priority)
+	Additional draw function with scaling.
+	Draw a frame with the size width x height at (screenX,screenY)
+
+・Graphics.sprites.####[*].img = LuaMovieResource movie
+	This is same as LuaImageResource.
+    
+・Graphics.movieHitEvent(LuaMovieResource img,function callback(number))
+	Set a callback function that is called when the player touched the hit area.
+	The argument is channel number.
+
+・movie:play()
+	Play the movie.
+
+・movie:pause()
+	Pause the movie.
+
+・movie:stop()
+	Stop the movie.(Back to start)
+
+・movie:seek(number seconds)
+	Seek the movie to the specified time (in second)
+
+・movie:setMaskThreshold(number ch,number threshold)
+	Set the hit area threshold of the specified channel.
+	Pixels larger than this value are treated as hit area.
+	Default:256 (>255 no hit area)
+    
+・movie.videoDelay = number delay
+	Set the delay of the video.
+	Default:0
+    
+・movie.maskDelay = number delay
+	Set the delay of the additional video.
+	Default:0
+	
+    
+・movie.scaleUpMode = number mode
+	Set the algorithm used when scale up
+	0=Nearest neighbor,1=Bilinear,other=Nearest neightbor
+    	Default:0
+
+・movie.scaleDownMode = number mode
+	Set the algorithm used when scale down
+	0=Nearest neighbor,1=Bilinear,other=Nearest neightbor
+    	Default:0
+
+・movie.offScreenMode = number mode
+	Set the behavior when the movie went out of the screen.
+	0=do nothing,1=pause,2=stop,other=do nothing
+    	Default:1
+	
+・movie.onScreenMode = number mode
+	Set the behavior when the movie came into the screen.
+	0=do nothing,1=play
+   	Default:1
+	
+・movie.loop = bool enable
+	Set whether movie loops or not/
+	Default:true
+
+・movie.altAlpha = number channel
+	Set the alternative alpha channel. -1=Unused
+    	Default:-1
+    
+・movie.alphaType = number mode
+	Set how to treat alpha channel.
+	0=premultiplied,1=straight
+	Default:0
+
+・movie.volume = number volume
+	Set the volume of audio.
+	Default:100

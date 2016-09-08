@@ -1,4 +1,4 @@
-LuaImageResourceを継承しているので画像としての操作はここに載っていなくても可能。
+﻿LuaImageResourceを継承しているので画像としての操作はここに載っていなくても可能。
 
 チャンネル番号とチャンネルの対応(B:青 G:緑 R:赤 A:アルファ)
 	0->B
@@ -42,6 +42,8 @@ LuaImageResourceを継承しているので画像としての操作はここに�
 ・Graphics.movieHitEvent(LuaMovieResource img,function callback(number))
 	当たり判定に接触した時に呼び出されるコールバックを設定する。
 	コールバックの引数として接触したチャンネル番号が与えられる。
+
+movie=LuaMovieResourceのインスタンス
 
 ・movie:play()
 	動画を再生する。
@@ -96,3 +98,7 @@ LuaImageResourceを継承しているので画像としての操作はここに�
 ・movie.alphaType = number mode
 	アルファチャンネルの扱い方の設定。0=プレマルチプライドアルファ,1=ストレートアルファ
     デフォルト値=0
+
+・movie.volume = number volume
+	音量調整 0～128
+    デフォルト値=100
